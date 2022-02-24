@@ -1,0 +1,23 @@
+<html>
+<script type="text/javascript">
+function getTemp() {
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+ if(this.readyState == 4 && this.status == 200) {
+  var resp = JSON.parse(this.response);
+  document.getElementById('result').innerHTML = resp.temp/1000;
+ }
+};
+xhttp.open("GET", "/temp", true);
+xhttp.send();
+}
+window.setInterval(getTemp,2000);
+getTemp();
+</script>
+<body>
+<div>
+<label for="result">Temp</label>
+<span id="result"/>
+</div>
+</body>
+</html>
